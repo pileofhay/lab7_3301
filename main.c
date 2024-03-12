@@ -16,23 +16,21 @@ void main(void)
     ADCON0 = 0x01;
     ADCON1 = 0x0E;
     ADCON2 = 0xA2;
-    
+    /*
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-   
+    
     PIR1bits.ADIF = 0;  
     PIE1bits.ADIE = 1;
     
-    u_char D1 = 0;
-    u_char D0 = 0;
+     */
     
     for (;;) 
     {
         
         ADCON0bits.GO = 1;
-        PIR1bits.ADIF = 0;
         
-        while(ADCON0bits.GO == 1 || PIR1bits.ADIF == 0)
+        while(ADCON0bits.GO == 1)
         {
             
             PORTD = ADRESH;
@@ -41,6 +39,9 @@ void main(void)
            
         }
         
+    }   
+    
+}
     }   
     
 }
